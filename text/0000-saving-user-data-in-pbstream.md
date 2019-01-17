@@ -25,7 +25,7 @@ Clients of libcartographer are responsible for serializing their data into the `
 
 `MapBuilder::LoadState` will return, besides the trajectory remapping like it currently does, the same vector of `UserData` protos that was passed during `SerializeState`.
 
-cartographer_ros will introduce a new proto or ROS message (up to discussion) called `NodeOptions`, which corresponds to `cartographer_ros::NodeOptions` (which currently does not have serialization).
+cartographer_ros will introduce a new proto or ROS message (up for discussion) called `NodeOptions`, which corresponds to `cartographer_ros::NodeOptions` (which currently does not have serialization).
 When saving the state, it will serialize its `NodeOptions` into a `UserData` proto and pass it to `MapBuilder::SerializeState`.
 A new flag, `load_configuration_from_state` will be introduced, which can be used with `load_state_filename` instead of providing `configuration_directory` and `configuration_basename(s)`.
 
