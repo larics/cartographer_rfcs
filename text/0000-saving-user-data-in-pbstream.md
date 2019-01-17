@@ -29,6 +29,8 @@ cartographer_ros will introduce a new proto or ROS message (up to discussion) ca
 When saving the state, it will serialize its `NodeOptions` into a `UserData` proto and pass it to `MapBuilder::SerializeState`.
 A new flag, `load_configuration_from_state` will be introduced, which can be used with `load_state_filename` instead of providing `configuration_directory` and `configuration_basename(s)`.
 
+Also introduce `cartographer::io::DeserializeUserDataFromFile` analogously to `DeserializePoseGraphFromFile` to avoid a catch-22 - to construct a `MapBuilder`, we need the configuration; but to read the configuration, we need a `MapBuilder` to perform `MapBuilder::LoadState`.
+`DeserializeUserDataFromFile` will then allow us to read the embedded configuration directly from the `.pbstream` before constructing the `MapBuilder`.
 
 
 ## Discussion Points
